@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <!-- google font -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Island+Moments&display=swap" rel="stylesheet">
+ 
+     <!-- custom css -->
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="style.css">
+    <title>Clock</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="battery">
+            <i class="fas fa-battery-full"></i>
+            <span id="battery" class="tc-orange"></span>
+        </div>
+
+        <div class="clockBox">
+            <div class="hr"></div>
+            <div class="min"></div>
+            <div class="sec"></div>
+            <span class="med tc-orange"></span>
+        </div>
+
+
+        <div class="details">
+            <div class="meteo tc-orange">
+                <span id="degree">
+                    22°
+                </span>
+                <i class="fas fa-sun fa-2x"></i>
+            </div>
+            <div class="location">
+                <span id="city" >
+                    Napoli
+                </span>
+                <span id="calendar" class="tc-orange">
+                    
+                </span>
+            </div>
+        </div>
+        <div class="toggle">
+            <i class="fas fa-sun morning tc-orange fa-2x"></i>
+            <i class="fas fa-moon toggle_active fa-2x tc-orange"></i> 
+        </div>
+    </div>
+
+    <!-- awesome -->
+    <script src="https://kit.fontawesome.com/4b900035da.js" crossorigin="anonymous"></script>
+    <!-- custom js -->
+    <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --orange: #E67253;
+    --light-gray: #dedede;
+    --white: #f5f5f5;
+    --gray: #c9c9c9;
+    --dark: #252525;
+}
+.tc-orange{
+    color: var(--orange);
+}
+.bg-dark{
+    background-color: var(--dark)!important;
+
+}
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-gray);
+    font-family: 'Island Moments', cursive;
+}
+.container{
+    width: 300px;
+    height: 550px;
+    border-radius: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.battery{
+    text-align: end;
+    margin: 13px 15px;
+}
+#battery{
+    font-size: 20px;
+    padding-bottom: 31px;
+}
+.clock{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 25%;
+}
+.location{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;    
+}
+#city{
+    margin-bottom: 20px;
+}
+.toggle{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.location{
+    display: flex;
+}
+
+.toggle_active{
+    display: none!important;
+}
+.morning,
+.fa-moon{
+    cursor: pointer;
+}
+.fa-battery-full,
+#city{
+    color: var(--gray);
+}
+
+#degree{
+    font-size: 50px;
+}
+#city{
+    font-size: 40px;
+}
+#calendar{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+/* clock */
+.clockBox{
+    position: relative;
+    height: 220px;
+    width: 220px;
+    margin: 10px auto;
+    background-color: var(--orange);
+    border-radius: 50%;
+}
+.clockBox::before{
+    content: '';
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    background-color: var(--white);
+    box-shadow: inset 0px 0px 6px 0 rgba(0, 0, 0, 0.381);
+}
+.clock::after{
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    background-color: var(--gray);
+}
+.min,
+.hr,
+.sec{
+    position: absolute;
+    transform: rotate(0deg);
+    transform-origin: bottom center;
+}
+.min{
+    height: 97px;
+    width: 4px;
+    background-color: var(--gray);
+    margin: auto;
+    top: 7%;
+    left: 49%;
+    border-radius: 2px;
+}
+.hr{
+    height: 70px;
+    width: 5px;
+    background-color: var(--gray);
+    margin: auto;
+    top: 18%;
+    left: 49%;
+    border-radius: 2px;
+}
+.sec{
+    height: 110px;
+    width: 2px;
+    background-color: var(--gray);
+    margin: auto;
+    top: 0%;
+    left: 49.5%;
+    border-radius: 2px;
+}
+.med{
+    position: absolute;
+    left: 47%;
+    bottom: 20px;
+}
