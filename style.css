@@ -23,7 +23,7 @@ body{
     align-items: center;
     justify-content: center;
     background-color: var(--light-gray);
-    font-family: 'Island Moments', cursive;
+    font-family: 'Smooch Sans', sans-serif;
 }
 .container{
     width: 300px;
