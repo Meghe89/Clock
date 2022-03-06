@@ -62,3 +62,34 @@ setInterval(()=>{
 
 
 },900);
+
+/* location */
+let cityDom = document.querySelector('#city')
+
+const findMyState = () =>{
+    const status =  document.querySelector('.status');
+
+
+    const success = (position) => {
+        console.log(position);
+        const latitude = /* 40.777869 */ position.coords.latitude;
+        const longitude = /* 14.260641 */ position.coords.longitude;
+
+        const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=it`
+
+        fetch(geoApiUrl)
+        .then(res => res.json())
+        .then(data => {
+            cityDom.innerHTML = data.city.split(' ')[3];
+            console.log(data);
+            console.log(`${data.city.split(' ')[3]} `);
+        })
+
+    }
+
+    const error = () =>{
+        status.textContent = `Unable to retrieve your location`
+    }
+    navigator.geolocation.getCurrentPosition(success,error);
+}
+document.addEventListener('DOMContentLoaded', findMyState);
