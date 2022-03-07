@@ -84,8 +84,8 @@ const findMyState = () =>{
 
     const success = (position) => {
         console.log(position);
-        const latitude = /* 46.0637888 */ position.coords.latitude;
-        const longitude = /* 11.0678273 */ position.coords.longitude;
+        const latitude = /* 40.8729443 */ position.coords.latitude;
+        const longitude = /* 14.2352435 */ position.coords.longitude;
 
         /* const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=it` */
 
@@ -99,7 +99,9 @@ const findMyState = () =>{
 
         console.log(latitude); */
 
-        const meteoApi = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=f99157b48e819831ffd36608e93d6d3b&lang=it`
+        var token = config.OPEN_WEATHER_TOKEN;
+
+        const meteoApi = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${token}&lang=it`
 
         fetch(meteoApi)
         .then(res => res.json())
