@@ -2,7 +2,7 @@ let light = true
 /* date calendar */
 
 let morning = document.querySelector('.morning')
-let night = document.querySelector('.fa-moon')
+let night = document.querySelector('.fa-toggle-on')
 let container = document.querySelector('.container')
 
 const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -37,6 +37,18 @@ setInterval(()=>{
     navigator.getBattery().then(function (battery) {
         let level = battery.level;        
         document.querySelector('#battery').innerHTML = (level*100) + '%';
+        let batteryIcon = document.querySelector('.battery-icon');
+        if(level <0.10){
+            batteryIcon.classList.add('fas', 'fa-battery-empty','tc-red')
+        } else if(level <= 0.25){
+            batteryIcon.classList.add('fas', 'fa-battery-quarter')
+        } else if(level <=0.50){
+            batteryIcon.classList.add('fas', 'fa-battery-half')
+        }else if(level <=0.75){
+            batteryIcon.classList.add('fas', 'fa-battery-three-quarters')
+        } else{
+            batteryIcon.classList.add('fas', 'fa-battery-full')
+        }        
     });
 
     const date = new Date();
@@ -72,19 +84,37 @@ const findMyState = () =>{
 
     const success = (position) => {
         console.log(position);
-        const latitude = /* 40.777869 */ position.coords.latitude;
-        const longitude = /* 14.260641 */ position.coords.longitude;
+        const latitude = /* 46.0637888 */ position.coords.latitude;
+        const longitude = /* 11.0678273 */ position.coords.longitude;
 
-        const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=it`
+        /* const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=it` */
 
-        fetch(geoApiUrl)
+        /* fetch(geoApiUrl)
         .then(res => res.json())
         .then(data => {
-            cityDom.innerHTML = data.city.split(' ')[3];
+            cityDom.innerHTML = `${data.localityInfo.administrative[3].name}`;
             console.log(data);
-            console.log(`${data.city.split(' ')[3]} `);
+            console.log(`${data.localityInfo.administrative[3].name}`);
         })
 
+        console.log(latitude); */
+
+        const meteoApi = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=f99157b48e819831ffd36608e93d6d3b&lang=it`
+
+        fetch(meteoApi)
+        .then(res => res.json())
+        .then(data =>{
+            let temp = data.main.temp;
+            let celsius = Math.floor(temp - 273.15)
+            let degree = document.querySelector('#degree').innerHTML = `${celsius}°`
+            cityDom.innerHTML = `${data.name}`
+            console.log(data);
+            
+            var iconCode = data.weather[0].icon;            
+            document.querySelector("#wicon").src =`http://openweathermap.org/img/w/${iconCode}.png`;
+            
+        })
+        
     }
 
     const error = () =>{
@@ -93,3 +123,7 @@ const findMyState = () =>{
     navigator.geolocation.getCurrentPosition(success,error);
 }
 document.addEventListener('DOMContentLoaded', findMyState);
+
+
+/* meteo */
+
