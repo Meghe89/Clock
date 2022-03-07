@@ -2,7 +2,7 @@ let light = true
 /* date calendar */
 
 let morning = document.querySelector('.morning')
-let night = document.querySelector('.fa-toggle-on')
+let night = document.querySelector('.fa-moon')
 let container = document.querySelector('.container')
 
 const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -84,20 +84,20 @@ const findMyState = () =>{
 
     const success = (position) => {
         console.log(position);
-        const latitude = /* 40.8729443 */ position.coords.latitude;
-        const longitude = /* 14.2352435 */ position.coords.longitude;
+        const latitude = /* 48.8620923 */ position.coords.latitude;
+        const longitude = /* 2.3486797 */ position.coords.longitude;
 
-        /* const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=it` */
+        const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=it`
 
-        /* fetch(geoApiUrl)
+        fetch(geoApiUrl)
         .then(res => res.json())
         .then(data => {
             cityDom.innerHTML = `${data.localityInfo.administrative[3].name}`;
             console.log(data);
             console.log(`${data.localityInfo.administrative[3].name}`);
-        })
+        }) 
 
-        console.log(latitude); */
+        console.log(latitude); 
 
         var token = config.OPEN_WEATHER_TOKEN;
 
@@ -109,7 +109,7 @@ const findMyState = () =>{
             let temp = data.main.temp;
             let celsius = Math.floor(temp - 273.15)
             let degree = document.querySelector('#degree').innerHTML = `${celsius}°`
-            cityDom.innerHTML = `${data.name}`
+            //cityDom.innerHTML = `${data.name}`
             console.log(data);
             
             var iconCode = data.weather[0].icon;            

@@ -76,7 +76,7 @@ body{
     display: none!important;
 }
 .morning,
-.fa-toggle-on{
+.fa-moon{
     cursor: pointer;
 }
 .battery-icon,
