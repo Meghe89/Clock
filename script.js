@@ -1,8 +1,8 @@
-let light = true
-
-let cityDom = document.querySelector('#city')
 
 const findMyState = () =>{
+    let light = true
+    
+    let cityDom = document.querySelector('#city')
     const status =  document.querySelector('.status');
     const success = (position) => {
         console.log(position);
