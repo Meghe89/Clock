@@ -17,11 +17,10 @@ const findMyState = () =>{
             cityDom.innerHTML = `${data.localityInfo.administrative[3].name}`;
             console.log(data);
             console.log(`${data.localityInfo.administrative[3].name}`);
-        })         
+        })             
         
-        var token = 'f99157b48e819831ffd36608e93d6d3b';
         
-        const meteoApi = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${token}&lang=it`
+        const meteoApi = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=f99157b48e819831ffd36608e93d6d3b&lang=it`
         
         fetch(meteoApi)
         .then(res => res.json())
