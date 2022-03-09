@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,22 +16,18 @@
     <link rel="stylesheet" href="style.css">
     <title>Clock</title>
 </head>
-<body>
-    
-    <div class="container">
+<body>    
+    <div class="container">        
         <div class="battery">
             <i class="battery-icon"></i>
             <span id="battery" class="tc-orange"></span>
         </div>
-
-        <div class="clockBox">
+        <div class="clockBox">            
             <div class="hr"></div>
             <div class="min"></div>
             <div class="sec"></div>
             <span class="med tc-orange"></span>
         </div>
-
-
         <div class="details">
             <div class="meteo tc-orange">
                 <span id="degree">
@@ -43,14 +39,18 @@
                 <span id="city" >
                     No Data
                 </span>
-                <span id="calendar" class="tc-orange">
-                    
+                <span id="calendar" class="tc-orange">                    
                 </span>
             </div>
         </div>
         <div class="toggle">
-            <i class="fas fa-sun morning tc-orange fa-2x"></i>
-            <i class="fas fa-moon toggle_active fa-2x tc-orange"></i> 
+            <div class="toggle_icon">
+                <i class="fas fa-toggle-off morning tc-orange fa-2x"></i>
+                <i class="fas fa-toggle-on night toggle_active fa-2x tc-orange"></i> 
+            </div>
+            <div class="text">
+                <span id="toggle_mode" class="tc-gray">DARK OFF</span>
+            </div>
         </div>
     </div>
     <i class="fas fa-lightbulb-on"></i>
