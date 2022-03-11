@@ -91,6 +91,7 @@ navigator.getBattery().then(function a (battery) {
             fetch(geoApiUrl)
             .then(res => res.json())
             .then(data => {
+                console.log(data);
                 cityDom.innerHTML = `${data.localityInfo.administrative[3].name}`;
                 /* console.log(data); */
                 /*  console.log(`${data.localityInfo.administrative[3].name}`); */
@@ -101,6 +102,7 @@ navigator.getBattery().then(function a (battery) {
             fetch(meteoApi)
             .then(res => res.json())
             .then(data =>{
+                console.log(data);
                 let temp = data.main.temp;
                 let celsius = Math.floor(temp - 273.15)
                 let degree = document.querySelector('#degree').innerHTML = `${celsius}°`
