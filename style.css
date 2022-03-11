@@ -73,9 +73,6 @@ body{
     justify-content: center;
     margin: 20px 0;
 }
-#toggle_mode{
-
-}
 .location{
     display: flex;
 }
@@ -153,7 +150,7 @@ body{
     width: 3px;
     background-color: var(--gray);
     margin: auto;
-    top: 8%;
+    top: 7%;
     left: 50%;
     border-radius: 2px;
 }
@@ -184,4 +181,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#wicon{
+    text-indent:-9999px
 }
