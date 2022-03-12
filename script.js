@@ -23,7 +23,7 @@ night.addEventListener('click', ()=>{
              
 })
 
-navigator.getBattery().then(function batteryLevel(battery) {
+navigator.getBattery().then(function (battery) {
     let level = battery.level;   
     /* console.log;    */  
     document.querySelector('#battery').innerHTML = (Math.floor(level *  100)) + '%';
@@ -39,7 +39,7 @@ navigator.getBattery().then(function batteryLevel(battery) {
     } else{
         batteryIcon.classList.add('fas', 'fa-battery-full')
     }        
-
+});
 
 const findMyState = () =>{
 
@@ -109,7 +109,7 @@ const findMyState = () =>{
         document.querySelector('.hr').style.transform = `rotate(${hour}deg)`;
         document.querySelector('.min').style.transform = `rotate(${minute}deg)`;
         document.querySelector('.sec').style.transform = `rotate(${second}deg)`;
-        batteryLevel(battery)
+        
         
     },900);
 
@@ -124,4 +124,3 @@ navigator.geolocation.getCurrentPosition(success,error);
 }
 
 document.addEventListener('DOMContentLoaded', findMyState);
-});
