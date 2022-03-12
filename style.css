@@ -150,7 +150,7 @@ body{
     width: 3px;
     background-color: var(--gray);
     margin: auto;
-    top: 7%;
+    top: 8%;
     left: 50%;
     border-radius: 2px;
 }
@@ -159,7 +159,7 @@ body{
     width: 4px;
     background-color: var(--gray);
     margin: auto;
-    top: 19%;
+    top: 20%;
     left:50%;
     border-radius: 2px;
 }
@@ -181,7 +181,4 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-#wicon{
-    text-indent:-9999px
 }
