@@ -23,6 +23,24 @@ night.addEventListener('click', ()=>{
              
 })
 
+navigator.getBattery().then(function batteryLevel(battery) {
+    let level = battery.level;   
+    /* console.log;    */  
+    document.querySelector('#battery').innerHTML = (Math.floor(level *  100)) + '%';
+    let batteryIcon = document.querySelector('.battery-icon');
+    if(level <=0.10){
+        batteryIcon.classList.add('fas', 'fa-battery-empty','tc-red')
+    } else if(level <= 0.25){
+        batteryIcon.classList.add('fas', 'fa-battery-quarter')
+    } else if(level <=0.50){
+        batteryIcon.classList.add('fas', 'fa-battery-half')
+    }else if(level <=0.80){
+        batteryIcon.classList.add('fas', 'fa-battery-three-quarters')
+    } else{
+        batteryIcon.classList.add('fas', 'fa-battery-full')
+    }        
+
+
 const findMyState = () =>{
 
     let cityDom = document.querySelector('#city')
@@ -80,23 +98,7 @@ const findMyState = () =>{
     calendar.innerHTML = `${day}, ${numData} ${month} ${year}`
     
     /* interval  */
-        navigator.getBattery().then(function (battery) {
-            let level = battery.level;   
-            /* console.log;    */  
-            document.querySelector('#battery').innerHTML = (Math.floor(level *  100)) + '%';
-            let batteryIcon = document.querySelector('.battery-icon');
-            if(level <=0.10){
-                batteryIcon.classList.add('fas', 'fa-battery-empty','tc-red')
-            } else if(level <= 0.25){
-                batteryIcon.classList.add('fas', 'fa-battery-quarter')
-            } else if(level <=0.50){
-                batteryIcon.classList.add('fas', 'fa-battery-half')
-            }else if(level <=0.80){
-                batteryIcon.classList.add('fas', 'fa-battery-three-quarters')
-            } else{
-                batteryIcon.classList.add('fas', 'fa-battery-full')
-            }        
-        });
+        
 
         if(hours >= 12){
             var period = 'pm'
@@ -107,7 +109,7 @@ const findMyState = () =>{
         document.querySelector('.hr').style.transform = `rotate(${hour}deg)`;
         document.querySelector('.min').style.transform = `rotate(${minute}deg)`;
         document.querySelector('.sec').style.transform = `rotate(${second}deg)`;
-        
+        batteryLevel(battery)
         
     },900);
 
@@ -122,3 +124,4 @@ navigator.geolocation.getCurrentPosition(success,error);
 }
 
 document.addEventListener('DOMContentLoaded', findMyState);
+});
