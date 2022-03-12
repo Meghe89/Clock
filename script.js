@@ -1,5 +1,29 @@
+let light = true
+let morning = document.querySelector('.morning')
+let night = document.querySelector('.night')
+let container = document.querySelector('.container')
+let toggleMode = document.querySelector('#toggle_mode')
+
+function toggle() {
+        
+    morning.classList.toggle('toggle_active')
+    night.classList.toggle('toggle_active')
+    light = false
+    container.classList.toggle('bg-dark')
+}
+
+morning.addEventListener('click', ()=>{
+    toggle()
+    toggleMode.innerHTML = 'DARK ON'    
+})
+
+night.addEventListener('click', ()=>{
+    toggle()
+    toggleMode.innerHTML = 'DARK OFF' 
+             
+})
+
 const findMyState = () =>{
-    let light = true
 
     let cityDom = document.querySelector('#city')
     const status =  document.querySelector('.status');
@@ -32,13 +56,9 @@ const findMyState = () =>{
             var iconCode = data.weather[0].icon;            
             document.querySelector("#wicon").src =`http://openweathermap.org/img/w/${iconCode}.png`;
         })
-        let morning = document.querySelector('.morning')
-        let night = document.querySelector('.night')
-        let container = document.querySelector('.container')
-        let toggleMode = document.querySelector('#toggle_mode')
+       
         
-        const monthNames = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"
-    ];
+        const monthNames = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
     const dayNames = ["Domenica","Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato"]
     
     setInterval(()=>{
@@ -91,24 +111,7 @@ const findMyState = () =>{
         
     },900);
 
-    function toggle() {
-        
-        morning.classList.toggle('toggle_active')
-        night.classList.toggle('toggle_active')
-        light = false
-        container.classList.toggle('bg-dark')
-    }
     
-    morning.addEventListener('click', ()=>{
-        toggle()
-        toggleMode.innerHTML = 'DARK ON'    
-    })
-    
-    night.addEventListener('click', ()=>{
-        toggle()
-        toggleMode.innerHTML = 'DARK OFF' 
-                 
-    })
     
 }
 const error = () =>{
