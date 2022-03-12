@@ -115,7 +115,7 @@ const findMyState = () =>{
     
 }
 const error = () =>{
-    status.textContent = `Unable to retrieve your location`
+    alert(`Error`)
 }
 
 navigator.geolocation.getCurrentPosition(success,error);
