@@ -27,7 +27,9 @@ night.addEventListener('click', ()=>{
 
 function data() {
     const monthNames = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
-    const dayNames = ["Domenica","Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato"]
+
+    const dayNames = ["Domenica","Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato"];
+
     var d = new Date()
     var numData = d.getDate()
     var month = monthNames[d.getMonth()]
@@ -57,6 +59,7 @@ function data() {
     document.querySelector('.hr').style.transform = `rotate(${hour}deg)`;
     document.querySelector('.min').style.transform = `rotate(${minute}deg)`;
     document.querySelector('.sec').style.transform = `rotate(${second}deg)`
+    console.log(`Qui ho i dati DATE per la prima volta`);
 }
 
 navigator.getBattery().then(function a (battery) {
@@ -76,7 +79,8 @@ navigator.getBattery().then(function a (battery) {
         batteryIcon.classList.add('fas', 'fa-battery-full')
     }        
     
-    
+    console.log(`Qui ho i dati battery per la prima volta`);
+
     const findMyState = () =>{
         let cityDom = document.querySelector('#city')
         const status =  document.querySelector('.status');
@@ -95,6 +99,7 @@ navigator.getBattery().then(function a (battery) {
                 cityDom.innerHTML = `${data.localityInfo.administrative[3].name}`;
                 /* console.log(data); */
                 /*  console.log(`${data.localityInfo.administrative[3].name}`); */
+                console.log(`qui ho la localizzazione`);
             })             
             
             const meteoApi = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=f99157b48e819831ffd36608e93d6d3b&lang=it`
@@ -112,6 +117,7 @@ navigator.getBattery().then(function a (battery) {
                 var iconCode = data.weather[0].icon;
                 let wicon = document.querySelector("#wicon")
                 wicon.src =`http://openweathermap.org/img/w/${iconCode}.png`;
+                console.log(`qui ho il meteo`);
                 
             })
                
@@ -121,9 +127,12 @@ navigator.getBattery().then(function a (battery) {
         }
         
         navigator.geolocation.getCurrentPosition(success,error);
+
         setInterval(()=>{        
-            data()        
+            data() 
+            console.log(`Qui ho i dati DATE nell'interval`);       
             a(battery)       
+            console.log(`Qui ho i battery DATE nell'interval`);       
             
         },900);
     }
