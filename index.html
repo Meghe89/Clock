@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-     <!-- google font -->
-     <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100;300;500;600;700&display=swap" rel="stylesheet">
- 
-     <!-- custom css -->
-
+    
+    <!-- custom css -->
+    
     <!-- custom css -->
     <link rel="stylesheet" href="style.css">
     <title>Clock</title>
@@ -51,7 +51,36 @@
             <div class="text">
                 <span id="toggle_mode" class="tc-gray">DARK OFF</span>
             </div>
+            <div class="details">
+                <a class="tc-gray" id="myBtn">More Details</a>
+            </div>
         </div>
+    </div>
+    
+    <!-- modal -->
+    
+    <div id="myModal" class="modal">
+        
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close"><i class="fas fa-times"></i></span>
+            <div class="modal_container">
+                <div class="sun-details">
+                    <div id="sunrise_container"><i class="fas fa-sun fa-3x"></i></i><span class="modal-fs" id="sunrise"></span></div>
+                    <div id="sunset_container"><i class="fas fa-moon fa-3x"></i><span id="sunset" class="modal-fs"></span></div>
+                </div>
+                <div class="det">
+                    <div id="det_press"><i class="fas fa-globe fa-2x"></i> <span id="press" class="modal-fs_det"></span></div>
+                    <div id="det_wind"> <i class="fas fa-wind fa-2x"></i><span id="wind" class="modal-fs_det"></span></div>
+                    <div id="det_hum"><i class="fas fa-water fa-2x"></i><span id="hum" class="modal-fs_det"></span ></div>
+                </div>
+                <div class="temp">
+                    <div id="max_container"><i class="fas fa-temperature-high fa-3x"></i><span id="max" class="modal-fs"> </span></div>
+                    <div id="min_container"><i class="fas fa-temperature-low fa-3x"></i><span id="min" class="modal-fs"> </span></div>
+                </div>            
+            </div>
+        </div>
+        
     </div>
     <i class="fas fa-lightbulb-on"></i>
     <!-- awesome -->
@@ -59,8 +88,8 @@
     
     <!-- custom js -->
     <script src="./script.js"></script>
-
-  
+    
+    
     
 </body>
 </html>

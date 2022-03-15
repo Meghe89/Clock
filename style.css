@@ -18,7 +18,7 @@
 }
 .bg-dark{
     background-color: var(--dark)!important;
-
+    
 }
 body{
     height: 100vh;
@@ -36,6 +36,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 }
 .battery{
     text-align: end;
@@ -182,3 +183,137 @@ body{
     justify-content: center;
     align-items: center;
 }
+#myBtn{
+    cursor: pointer;
+    text-decoration: underline;
+    position: absolute;
+    right: 10px;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100vw; /* Full width */
+    height: 100vh; /* Full height */    
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    border: 1px solid red;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    /* height: 100vh; */
+    background-color: #fefefe;
+    /* margin: 15% auto; */
+    padding: 20px;
+    border: 1px solid #888;
+    position: relative;
+    max-width: 300px;
+    max-height: 550px;
+    margin: auto;
+    margin-top: 100px;
+    align-content: center;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal_container{
+    margin-top: 20px;
+    
+}
+.sun-details,
+.temp{
+    display:flex;
+    justify-content: space-between;
+}
+#sunrise_container,
+#sunset_container,
+#max_container,
+#min_container{
+    width:150px;
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
+}
+.det{
+    display:flex;
+    align-items: center;
+    justify-content:space-evenly;    
+}
+.det #det_press,
+.det #det_wind,
+.det #det_hum{    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+}
+.det,
+.temp,
+#sunrise_container{
+    height:100px;
+}
+
+
+.fa-sun,
+.fa-temperature-high,
+.fa-moon,
+.fa-temperature-low,
+.fa-wind,
+.fa-water,
+.fa-globe{       
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;   
+}
+.fa-sun{
+    background-image: linear-gradient(188deg, rgba(2,0,36,1) 0%, rgba(242,16,16,1) 5%, rgba(255,244,0,1) 100%);
+}
+.fa-temperature-high{
+    background-image: linear-gradient(100deg, rgba(2,0,36,1) 0%, rgba(242,16,16,1) 5%, rgba(255,244,0,1) 100%);
+}
+.fa-moon{
+    background-image: linear-gradient(155deg, rgba(34,61,195,1) 0%, rgba(252,253,45,1) 100%);     
+}
+.fa-temperature-low{
+    background-image: linear-gradient(188deg, rgba(2,0,36,1) 0%, rgba(16,77,242,1) 5%, rgba(9,5,85,1) 100%);    
+}
+.fa-wind{
+    background-image: linear-gradient(155deg, rgba(34,48,195,1) 0%, rgba(255,255,255,1) 100%);
+}
+.fa-water{
+    background-image: linear-gradient(240deg, rgba(34,48,195,1) 0%, rgba(255,255,255,1) 100%);
+}
+.fa-globe{
+    background-image: linear-gradient(155deg, rgba(59,195,34,1) 0%, rgba(255,255,255,1) 100%);   
+}
+
+.modal-fs{
+    font-size: 31px;
+}
+.modal-fs_det{
+    font-size: 21px;
+}
+
