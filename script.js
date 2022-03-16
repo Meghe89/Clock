@@ -28,7 +28,7 @@ night.addEventListener('click', ()=>{
 
 navigator.getBattery().then(function (battery) {
     let level = battery.level;   
-    console.log(battery.charging);     
+    /* console.log(battery.charging);      */
     document.querySelector('#battery').innerHTML = (Math.floor(level *  100)) + '%';
     let batteryIcon = document.querySelector('.battery-icon');
     if(battery.charging){
@@ -105,14 +105,14 @@ const findMyState = () =>{
             let sunset = document.querySelector('#sunset').innerHTML = ` ${Time(meteo.sys.sunset)}`; 
             
             /* press */
-            console.log(meteo);
+            /* console.log(meteo); */
             let press = document.querySelector('#press').innerHTML = ` ${meteo.main.pressure} hPa`; 
             let windSpeed = (meteo.wind.speed).toFixed(1)
             let wind = document.querySelector('#wind').innerHTML = ` ${windSpeed} m/s `; 
             let hum = document.querySelector('#hum').innerHTML = ` ${meteo.main. humidity} %`; 
 
-            let windIcon = document.querySelector('.fa-angle-double-up')
-            console.log(meteo.wind.deg);
+            let windIcon = document.querySelector('.fa-angles-down')
+            /* console.log(meteo.wind.deg); */
             windIcon.style.transform = `rotate(${meteo.wind.deg}deg)`
             
            
