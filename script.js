@@ -3,6 +3,7 @@ let morning = document.querySelector('.morning')
 let night = document.querySelector('.night')
 let container = document.querySelector('.container')
 let toggleMode = document.querySelector('#toggle_mode')
+let modalContent = document.querySelector('.modal-content')
 
 function toggle() {
     
@@ -10,6 +11,8 @@ function toggle() {
     night.classList.toggle('toggle_active')
     light = false
     container.classList.toggle('bg-dark')
+    modalContent.classList.toggle('bg-dark')
+    modalContent.classList.toggle('tc-gray')
 }
 
 morning.addEventListener('click', ()=>{
@@ -25,9 +28,12 @@ night.addEventListener('click', ()=>{
 
 navigator.getBattery().then(function (battery) {
     let level = battery.level;   
-    /* console.log;    */  
+    console.log(battery.charging);     
     document.querySelector('#battery').innerHTML = (Math.floor(level *  100)) + '%';
     let batteryIcon = document.querySelector('.battery-icon');
+    if(battery.charging){
+        batteryIcon.classList.add('fas', 'fa-solid fa-bolt')
+    }
     if(level <=0.10){
         batteryIcon.classList.add('fas', 'fa-battery-empty','tc-red')
     } else if(level <= 0.25){
@@ -55,31 +61,36 @@ const findMyState = () =>{
         fetch(geoApiUrl)
         .then(res => res.json())
         .then(data => {
-            cityDom.innerHTML = `${data.localityInfo.administrative[3].name}`;
+            
+            function truncateCityName(cityName) {
+                return cityName.length <= 21 ? cityName : cityName.substr(0,20) + '...'
+            }
+            
+            cityDom.innerHTML = `${truncateCityName(data.localityInfo.administrative[3].name)}`;
             /* console.log(data); */
             /*  console.log(`${data.localityInfo.administrative[3].name}`); */
         })             
         
-        const meteoApi = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=f99157b48e819831ffd36608e93d6d3b&lang=it`
+        const meteoApi = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=f99157b48e819831ffd36608e93d6d3b&units=metric&lang=it`
         
         fetch(meteoApi)
         .then(res => res.json())
         .then(meteo =>{
             /* actual temp */
             let temp = meteo.main.temp;
-            let celsius = Math.floor(temp - 273.15)
+            let celsius = Math.floor(temp)
             let degree = document.querySelector('#degree').innerHTML = `${celsius}°`
 
             var iconCode = meteo.weather[0].icon;            
             document.querySelector("#wicon").src =`http://openweathermap.org/img/w/${iconCode}.png`;
             /* max temp */
             let maxTemp = meteo.main.temp_max;
-            let maxC = Math.floor(maxTemp - 273.15)            
+            let maxC = Math.floor(maxTemp)            
             let max = document.querySelector('#max').innerHTML = ` ${maxC}°`;
 
             /* min temp */
             let minTemp = meteo.main.temp_min;
-            let minC = Math.floor(minTemp - 273.15)    
+            let minC = Math.floor(minTemp)    
             let min = document.querySelector('#min').innerHTML = ` ${minC}°`;           
             
             /* sun  */
@@ -96,9 +107,13 @@ const findMyState = () =>{
             /* press */
             console.log(meteo);
             let press = document.querySelector('#press').innerHTML = ` ${meteo.main.pressure} hPa`; 
-            let windSpeed = (meteo.wind.speed * 3.6).toFixed(2)
-            let wind = document.querySelector('#wind').innerHTML = ` ${windSpeed} m/s`; 
+            let windSpeed = (meteo.wind.speed).toFixed(1)
+            let wind = document.querySelector('#wind').innerHTML = ` ${windSpeed} m/s `; 
             let hum = document.querySelector('#hum').innerHTML = ` ${meteo.main. humidity} %`; 
+
+            let windIcon = document.querySelector('.fa-angle-double-up')
+            console.log(meteo.wind.deg);
+            windIcon.style.transform = `rotate(${meteo.wind.deg}deg)`
             
            
                   
