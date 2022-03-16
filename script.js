@@ -32,7 +32,7 @@ navigator.getBattery().then(function (battery) {
     document.querySelector('#battery').innerHTML = (Math.floor(level *  100)) + '%';
     let batteryIcon = document.querySelector('.battery-icon');
     if(battery.charging){
-        batteryIcon.classList.add('fas', 'fa-solid fa-bolt')
+        batteryIcon.classList.add('fas', 'fa-solid', 'fa-bolt','tc-green')
     }
     if(level <=0.10){
         batteryIcon.classList.add('fas', 'fa-battery-empty','tc-red')

@@ -103,6 +103,9 @@ body{
 .tc-red{
     color: #ff0000;
 }
+.tc-green{
+    color: #53a50f;
+}
 #wicon{
     padding-top: 10px;
 }
