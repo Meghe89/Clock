@@ -100,7 +100,6 @@ body{
     font-size: 25px;
     font-weight: bold;
 }
-
 #wicon{
     padding-top: 10px;
 }
@@ -254,7 +253,7 @@ body{
 .det{
     display:flex;
     align-items: center;
-    justify-content:space-evenly;    
+    justify-content:space-between;    
 }
 .det #det_press,
 .det #det_wind,
@@ -264,6 +263,7 @@ body{
     justify-content: space-evenly;
     align-items: center;
     height: 100%;
+    padding: 0 10px;
 }
 .det,
 .temp,
@@ -277,8 +277,8 @@ body{
 .fa-moon,
 .fa-temperature-low,
 .fa-wind,
-.fa-water,
-.fa-globe{       
+.fa-tint,
+.fa-level-down-alt{       
     background-size: 100%;
     -webkit-background-clip: text;
     -moz-background-clip: text;
@@ -298,12 +298,12 @@ body{
     background-image: linear-gradient(188deg, rgba(2,0,36,1) 0%, rgba(16,77,242,1) 5%, rgba(9,5,85,1) 100%);    
 }
 .fa-wind{
-    background-image: linear-gradient(155deg, rgba(34,48,195,1) 0%, rgba(255,255,255,1) 100%);
+    background-image: linear-gradient(90deg, rgba(34,48,195,1) 0%, rgba(255,255,255,1) 100%);
 }
-.fa-water{
+.fa-tint{
     background-image: linear-gradient(240deg, rgba(34,48,195,1) 0%, rgba(255,255,255,1) 100%);
 }
-.fa-globe{
+.fa-level-down-alt{
     background-image: linear-gradient(155deg, rgba(59,195,34,1) 0%, rgba(255,255,255,1) 100%);   
 }
 
@@ -313,4 +313,3 @@ body{
 .modal-fs_det{
     font-size: 21px;
 }
-
