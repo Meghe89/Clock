@@ -23,23 +23,30 @@ night.addEventListener('click', ()=>{
     
 })
 
-navigator.getBattery().then(function (battery) {
-    let level = battery.level;   
-    /* console.log;    */  
-    document.querySelector('#battery').innerHTML = (Math.floor(level *  100)) + '%';
-    let batteryIcon = document.querySelector('.battery-icon');
-    if(level <=0.10){
-        batteryIcon.classList.add('fas', 'fa-battery-empty','tc-red')
-    } else if(level <= 0.25){
-        batteryIcon.classList.add('fas', 'fa-battery-quarter')
-    } else if(level <=0.50){
-        batteryIcon.classList.add('fas', 'fa-battery-half')
-    }else if(level <=0.80){
-        batteryIcon.classList.add('fas', 'fa-battery-three-quarters')
-    } else{
-        batteryIcon.classList.add('fas', 'fa-battery-full')
-    }        
+navigator.getBattery()
+.then(function (battery) {
+    setInterval(()=>{
+        let level = battery.level;         
+        
+        document.querySelector('#battery').innerHTML = (Math.floor(level *  100)) + '%';
+        let batteryIcon = document.querySelector('.battery-icon');
+        if(level <=0.10){
+            batteryIcon.classList.add('fas', 'fa-battery-empty','tc-red')
+        } else if(level <= 0.25){
+            batteryIcon.classList.add('fas', 'fa-battery-quarter')
+        } else if(level <=0.50){
+            batteryIcon.classList.add('fas', 'fa-battery-half')
+        }else if(level <=0.80){
+            batteryIcon.classList.add('fas', 'fa-battery-three-quarters')
+        } else{
+            batteryIcon.classList.add('fas', 'fa-battery-full')
+        }        
+
+    },2000)
 });
+
+
+
 
 const findMyState = () =>{
     
@@ -94,7 +101,7 @@ const findMyState = () =>{
             let sunset = document.querySelector('#sunset').innerHTML = ` ${Time(meteo.sys.sunset)}`; 
             
             /* press */
-            console.log(meteo);
+            
             let press = document.querySelector('#press').innerHTML = ` ${meteo.main.pressure} hPa`; 
             let windSpeed = (meteo.wind.speed * 3.6).toFixed(2)
             let wind = document.querySelector('#wind').innerHTML = ` ${windSpeed} m/s`; 
