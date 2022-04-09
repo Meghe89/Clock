@@ -29,12 +29,19 @@ night.addEventListener('click', ()=>{
 navigator.getBattery()
 .then(function (battery) {
     setInterval(()=>{
-        let level = battery.level;         
+        let level = battery.level;
+        
+              
         
         document.querySelector('#battery').innerHTML = (Math.floor(level *  100)) + '%';
         let batteryIcon = document.querySelector('.battery-icon');
+        if (battery.charging) {
+            batteryIcon.classList.add('fa-solid', 'fa-bolt')
+            batteryIcon.style.color = '#90EE90'
+        }
         if(level <=0.10){
-            batteryIcon.classList.add('fas', 'fa-battery-empty','tc-red')
+            batteryIcon.classList.add('fas', 'fa-battery-empty')
+            batteryIcon.style.color = '#ff0000';
         } else if(level <= 0.25){
             batteryIcon.classList.add('fas', 'fa-battery-quarter')
         } else if(level <=0.50){
