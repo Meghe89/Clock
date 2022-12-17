@@ -9,6 +9,8 @@
     --white: #f5f5f5;
     --gray: #c9c9c9;
     --dark: #252525;
+    --red: #ff0000;
+    --green: #90EE90;
 }
 .tc-orange{
     color: var(--orange);
@@ -100,12 +102,6 @@ body{
     font-size: 25px;
     font-weight: bold;
 }
-.tc-red{
-    color: #ff0000;
-}
-.tc-green{
-    color: #53a50f;
-}
 #wicon{
     padding-top: 10px;
 }
@@ -154,7 +150,7 @@ body{
     width: 3px;
     background-color: var(--gray);
     margin: auto;
-    top: 7%;
+    top: 8%;
     left: 50%;
     border-radius: 2px;
 }
@@ -172,7 +168,7 @@ body{
     width: 2px;
     background-color:var(--gray) ;
     margin: auto;
-    top: 8%;
+    top: 9%;
     left: 50%;
     border-radius: 2px;
 }
@@ -213,8 +209,7 @@ body{
     height: 100vh; /* Full height */    
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */    
 }
 
 /* Modal Content/Box */

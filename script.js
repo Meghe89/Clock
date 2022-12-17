@@ -45,6 +45,9 @@ navigator.getBattery().then(function (battery) {
     }        
 });
 
+
+
+
 const findMyState = () =>{
     
     let cityDom = document.querySelector('#city')
@@ -103,7 +106,7 @@ const findMyState = () =>{
             let sunset = document.querySelector('#sunset').innerHTML = ` ${Time(meteo.sys.sunset)}`; 
             
             /* press */
-            /* console.log(meteo); */
+            
             let press = document.querySelector('#press').innerHTML = ` ${meteo.main.pressure} hPa`; 
             let windSpeed = (meteo.wind.speed).toFixed(1)
             let wind = document.querySelector('#wind').innerHTML = ` ${windSpeed} m/s `; 
