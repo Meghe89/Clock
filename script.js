@@ -5,30 +5,28 @@ let container = document.querySelector('.container')
 let toggleMode = document.querySelector('#toggle_mode')
 let modalContent = document.querySelector('.modal-content')
 
-function toggle() {
-    
+function toggle() {    
     morning.classList.toggle('toggle_active')
     night.classList.toggle('toggle_active')
     light = false
-    container.classList.toggle('bg-dark')
-    modalContent.classList.toggle('bg-dark')
-    modalContent.classList.toggle('tc-gray')
+    container.classList.toggle('bg-light')
+    modalContent.classList.toggle('bg-light');
+    modalContent.style.color='#000';
 }
 
 morning.addEventListener('click', ()=>{
     toggle()
-    toggleMode.innerHTML = 'DARK ON'    
+    toggleMode.innerText = 'DARK ON'    
 })
 
 night.addEventListener('click', ()=>{
     toggle()
-    toggleMode.innerHTML = 'DARK OFF' 
+    toggleMode.innerText = 'DARK OFF' 
     
 })
 
 navigator.getBattery().then(function (battery) {
-    let level = battery.level;   
-    /* console.log(battery.charging);      */
+    let level = battery.level;
     document.querySelector('#battery').innerHTML = (Math.floor(level *  100)) + '%';
     let batteryIcon = document.querySelector('.battery-icon');
     if(battery.charging){
@@ -80,27 +78,27 @@ const findMyState = () =>{
             let temp = meteo.main.temp;
             let celsius = Math.floor(temp)
             let degree = document.querySelector('#degree').innerHTML = `${celsius}°`
-
+            
             var iconCode = meteo.weather[0].icon;            
             document.querySelector("#wicon").src =`http://openweathermap.org/img/w/${iconCode}.png`;
             /* max temp */
             let maxTemp = meteo.main.temp_max;
             let maxC = Math.floor(maxTemp)            
             let max = document.querySelector('#max').innerHTML = ` ${maxC}°`;
-
+            
             /* min temp */
             let minTemp = meteo.main.temp_min;
             let minC = Math.floor(minTemp)    
-            let min = document.querySelector('#min').innerHTML = ` ${minC}°`;           
+            let min = document.querySelector('#min').innerHTML = ` ${minC}°`;
             
             /* sun  */
             function Time (timestamp){
                 var date = new Date(timestamp * 1000);
-              var hours = date.getHours();
-              var minutes = "0" + date.getMinutes();
-              var formattedTime = `${hours}:${minutes.substr(-2)}`;  
+                var hours = date.getHours();
+                var minutes = "0" + date.getMinutes();
+                var formattedTime = `${hours}:${minutes.substr(-2)}`;  
                 return formattedTime
-              }
+            }
             let sunrise = document.querySelector('#sunrise').innerHTML = ` ${Time(meteo.sys.sunrise)}`;
             let sunset = document.querySelector('#sunset').innerHTML = ` ${Time(meteo.sys.sunset)}`; 
             
@@ -110,16 +108,16 @@ const findMyState = () =>{
             let windSpeed = (meteo.wind.speed).toFixed(1)
             let wind = document.querySelector('#wind').innerHTML = ` ${windSpeed} m/s `; 
             let hum = document.querySelector('#hum').innerHTML = ` ${meteo.main. humidity} %`; 
-
+            
             let windIcon = document.querySelector('.fa-angles-down')
             /* console.log(meteo.wind.deg); */
             windIcon.style.transform = `rotate(${meteo.wind.deg}deg)`
             
-           
-                  
             
-           
-        
+            
+            
+            
+            
             
         })
         

@@ -14,6 +14,12 @@
     
     <!-- custom css -->
     <link rel="stylesheet" href="style.css">
+     <!-- awesome -->
+     <script src="https://kit.fontawesome.com/4b900035da.js" crossorigin="anonymous" defer></script>
+    
+     <!-- custom js -->
+     <script src="./script.js" defer></script>
+     
     <title>Clock</title>
 </head>
 <body>    
@@ -45,13 +51,14 @@
         </div>
         <div class="toggle">
             <div class="toggle_icon">
-                <i class="fas fa-toggle-off morning tc-orange fa-2x"></i>
-                <i class="fas fa-toggle-on night toggle_active fa-2x tc-orange"></i> 
+                <i class="fas fa-toggle-off morning toggle_active tc-orange fa-2x"></i>
+                <i class="fas fa-toggle-on night fa-2x tc-orange"></i> 
             </div>
             <div class="text">
-                <span id="toggle_mode" class="tc-gray">DARK OFF</span>
+                <span id="toggle_mode" class="tc-gray">DARK ON</span>
             </div>
-            <div class="details">
+            <div class="details-bottom">
+                <a href="#" class="tc-gray" id="meteo-btn">15 day meteo</a>
                 <a class="tc-gray" id="myBtn">More Details</a>
             </div>
         </div>
@@ -88,13 +95,5 @@
         
     </div>
     <i class="fas fa-lightbulb-on"></i>
-    <!-- awesome -->
-    <script src="https://kit.fontawesome.com/4b900035da.js" crossorigin="anonymous"></script>
-    
-    <!-- custom js -->
-    <script src="./script.js"></script>
-    
-    
-    
 </body>
 </html>

@@ -16,8 +16,8 @@
 .tc-gray{
     color: var(--gray)
 }
-.bg-dark{
-    background-color: var(--dark)!important;
+.bg-light{
+    background-color: var(--white)!important;
     
 }
 body{
@@ -32,7 +32,7 @@ body{
     width: 300px;
     height: 550px;
     border-radius: 20px;
-    background-color: white;
+    background-color: var(--dark);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -186,11 +186,21 @@ body{
     justify-content: center;
     align-items: center;
 }
-#myBtn{
+
+#myBtn,
+#meteo-btn {
     cursor: pointer;
     text-decoration: underline;
     position: absolute;
-    right: 10px;
+    bottom: 5px;
+}
+
+#meteo-btn {
+    left: 15px;
+}
+
+#myBtn {
+    right: 15px;
 }
 
 .modal {
@@ -209,17 +219,16 @@ body{
 
 /* Modal Content/Box */
 .modal-content {
-    /* height: 100vh; */
-    background-color: #fefefe;
-    /* margin: 15% auto; */
     padding: 20px;
     border: 1px solid #888;
-    position: relative;
     max-width: 300px;
     max-height: 550px;
-    margin: auto;
-    margin-top: 100px;
-    align-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: var(--dark);
+    color: var(--white);
 }
 
 /* The Close Button */
@@ -234,7 +243,6 @@ body{
 
 .close:hover,
 .close:focus {
-    color: black;
     text-decoration: none;
     cursor: pointer;
 }
@@ -320,3 +328,4 @@ body{
 .modal-fs_det{
     font-size: 21px;
 }
+
