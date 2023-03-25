@@ -3,7 +3,9 @@ let morning = document.querySelector('.morning')
 let night = document.querySelector('.night')
 let container = document.querySelector('.container')
 let toggleMode = document.querySelector('#toggle_mode')
-let modalContent = document.querySelector('.modal-content')
+let modalContent = document.querySelector('.modal-content');
+
+let timezone = '';
 
 function toggle() {    
     morning.classList.toggle('toggle_active')
@@ -45,15 +47,10 @@ navigator.getBattery().then(function (battery) {
     }        
 });
 
-
-
-
 const findMyState = () =>{
-    
     let cityDom = document.querySelector('#city')
-    const status =  document.querySelector('.status');
+    /* const status =  document.querySelector('.status'); */
     const success = (position) => {
-        /* console.log(position); */
         const latitude = /* 37.9908372 */ position.coords.latitude;
         const longitude = /* 23.7383394 */ position.coords.longitude;
         
@@ -68,8 +65,6 @@ const findMyState = () =>{
             }
             
             cityDom.innerHTML = `${truncateCityName(data.localityInfo.administrative[3].name)}`;
-            /* console.log(data); */
-            /*  console.log(`${data.localityInfo.administrative[3].name}`); */
         })             
         
         const meteoApi = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=f99157b48e819831ffd36608e93d6d3b&units=metric&lang=it`
@@ -81,6 +76,8 @@ const findMyState = () =>{
             let temp = meteo.main.temp;
             let celsius = Math.floor(temp)
             let degree = document.querySelector('#degree').innerHTML = `${celsius}°`
+
+            timezone = meteo.timezone;
             
             var iconCode = meteo.weather[0].icon;            
             document.querySelector("#wicon").src =`http://openweathermap.org/img/w/${iconCode}.png`;
@@ -102,6 +99,7 @@ const findMyState = () =>{
                 var formattedTime = `${hours}:${minutes.substr(-2)}`;  
                 return formattedTime
             }
+
             let sunrise = document.querySelector('#sunrise').innerHTML = ` ${Time(meteo.sys.sunrise)}`;
             let sunset = document.querySelector('#sunset').innerHTML = ` ${Time(meteo.sys.sunset)}`; 
             
@@ -112,16 +110,8 @@ const findMyState = () =>{
             let wind = document.querySelector('#wind').innerHTML = ` ${windSpeed} m/s `; 
             let hum = document.querySelector('#hum').innerHTML = ` ${meteo.main. humidity} %`; 
             
-            let windIcon = document.querySelector('.fa-angles-down')
-            /* console.log(meteo.wind.deg); */
+            let windIcon = document.querySelector('.fa-angles-down');
             windIcon.style.transform = `rotate(${meteo.wind.deg}deg)`
-            
-            
-            
-            
-            
-            
-            
         })
         
         
@@ -129,42 +119,37 @@ const findMyState = () =>{
         const dayNames = ["Domenica","Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato"]
         
         setInterval(()=>{
-            var d = new Date()
-            var numData = d.getDate()
-            var month = monthNames[d.getMonth()]
-            var day = dayNames[d.getDay()]
-            var year = d.getFullYear()
-            var hours = d.getHours()
-            var minutes = d.getMinutes()
-            var seconds = d.getSeconds()
+            var d = new Date();
+            const utc = d.getTime() + (d.getTimezoneOffset() *60000)
+            const offset = timezone * 60 * 60 * 1000;
+            const localDate = new Date(utc + offset)
+
+            const numData = localDate.getDate();
+            const month = dayNames[localDate.getMonth()];
+            const day = dayNames[localDate.getDay()];
+            const year = localDate.getFullYear();
+            const hours = localDate.getHours();
+            const minutes = localDate.getMinutes();
+            const seconds = localDate.getSeconds();
             
-            const hour = 30*hours + minutes/2
+            const hour = 30 * hours + minutes/2
             const minute = 6 * minutes
             const second = 6 * seconds 
-            /* var gmtHours = -d.getTimezoneOffset()/60; */  
             
             let calendar = document.querySelector('#calendar')
             calendar.innerHTML = `${day}, ${numData} ${month} ${year}`
-            
-            /* interval  */
-            
             
             if(hours >= 12){
                 var period = 'pm'
             }else{
                 var period = 'am'
             }
+
             document.querySelector('.med').innerHTML = period;
             document.querySelector('.hr').style.transform = `rotate(${hour}deg)`;
             document.querySelector('.min').style.transform = `rotate(${minute}deg)`;
             document.querySelector('.sec').style.transform = `rotate(${second}deg)`;          
-            
-            
-            
         },900);
-        
-        
-        
     }
     const error = () =>{
         alert(`Error`)
